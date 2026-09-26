@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=576">
 <title>Health Leveling — Home hero</title>
 <link rel="stylesheet" href=".impeccable/build/scaffold/layout.css">
 <style>
-  html,body{margin:0;padding:0;background:#e8e6e0;}
+  html,body{margin:0;padding:0;background:#f8f8ef;}
   .frame{position:relative;width:576px;height:1024px;margin:0 auto;background:#f8f8ef;overflow:hidden;font-family:'M PLUS 1p',sans-serif;color:#0a0d15;}
-  .sb-time{position:absolute;left:4%;top:4%;font-size:66px;font-weight:700;line-height:1.35;}
-  .sb-icons{position:absolute;right:4%;top:24%;display:flex;gap:12px;align-items:center;transform:scale(1.5);transform-origin:right center;}
+  .sb-time{position:absolute;left:4%;top:0.8%;font-size:24px;font-weight:600;line-height:1;}
+  .sb-icons{position:absolute;right:4%;top:24%;display:flex;gap:12px;align-items:center;transform:scale(1.2);transform-origin:right center;}
   .sig{display:flex;align-items:flex-end;gap:2px;}
   .sig i{width:6px;background:#0a0d15;display:block;}
   .sig i:nth-child(1){height:6px}.sig i:nth-child(2){height:10px}.sig i:nth-child(3){height:14px}.sig i:nth-child(4){height:18px}
@@ -16,12 +17,12 @@
   .wifi i{position:absolute;left:50%;bottom:0;transform:translateX(-50%);border:3px solid transparent;border-top-color:#0a0d15;}
   .wifi i:nth-child(1){border-width:8px 10px 0;bottom:0}
   .wifi i:nth-child(2){border-width:5px 7px 0;bottom:6px}
-  .batt{width:30px;height:15px;border:2.5px solid #0a0d15;border-radius:4px;position:relative;background:#0a0d15;}
-  .batt i{position:absolute;right:-5px;top:3px;width:3px;height:5px;background:#0a0d15;border-radius:1px;}
-  .tb-title{position:absolute;left:0;top:10%;width:100%;height:10%;display:flex;align-items:center;}
-  .tb-title .back{font-size:30px;font-weight:700;margin-left:24px;}
-  .tb-title .t{flex:1;text-align:center;font-size:30px;font-weight:700;line-height:1.4;}
-  .tb-title .more{font-size:28px;font-weight:700;margin-right:24px;letter-spacing:2px;}
+  .batt{width:30px;height:15px;border:2.5px solid #0a0d15;border-radius:4px;position:relative;background:transparent;}
+  .batt i{position:absolute;left:2px;top:2px;width:19px;height:7px;background:#0a0d15;border-radius:1px;}
+  .tb-title{position:absolute;left:0;top:6.4%;width:100%;height:4.4%;display:flex;align-items:center;}
+  .tb-title .back{font-size:30px;font-weight:700;margin-left:20px;line-height:1;}
+  .tb-title .t{flex:1;text-align:center;font-size:38px;font-weight:700;line-height:1;padding:0;}
+  .tb-title .more{font-size:22px;font-weight:700;margin-right:24px;letter-spacing:2px;line-height:1;}
   .gauge-plate{display:block;}
   .gauge-plate img{width:100%;height:100%;object-fit:contain;}
   .arc{border:10px solid #f3ddc9;border-radius:50%;}
@@ -29,32 +30,98 @@
   #gauge-left-arc{border-color:transparent transparent transparent #f0671e;border-style:solid;border-width:10px;border-radius:50%;transform:rotate(0deg);box-sizing:border-box;}
   #gauge-right-arc{border-color:transparent #f0671e transparent transparent;border-style:solid;border-width:10px;border-radius:50%;box-sizing:border-box;}
   #gauge-bottom-arc{border-color:transparent transparent #f0671e transparent;border-style:solid;border-width:10px;border-radius:50%;box-sizing:border-box;}
-  #coin-chip{background:#12b49f;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:700;}
-  #coin-numeral{display:flex;align-items:center;justify-content:flex-start;font-size:56px;font-weight:800;color:#080f19;line-height:1;}
+  #coin-chip{z-index:5;background:#12b49f;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:700;overflow:hidden;white-space:nowrap;}
+  #coin-numeral{z-index:3;display:flex;align-items:center;justify-content:flex-start;font-size:56px;font-weight:800;color:#080f19;line-height:1;}
   #challenge-card{background:#fff;border-radius:16px;display:flex;align-items:center;padding:0 18px;font-size:30px;font-weight:400;color:#090e15;}
-  #progress-bar{display:flex;align-items:center;}
-  #progress-bar .wrap{width:100%;height:12px;background:#e7e5da;border-radius:6px;overflow:hidden;}
+  #progress-bar{display:flex;align-items:flex-start;padding:37px 24px 0;box-sizing:border-box;}
+  #progress-bar .wrap{width:100%;height:7px;background:#e0ded4;border-radius:6px;overflow:hidden;}
   #progress-bar .fill{width:35%;height:100%;background:#0ab199;border-radius:6px;}
   #cta-start{background:#f0671e;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:700;}
   #bottom-nav{background:#f7f7f7;display:flex;align-items:center;justify-content:space-around;}
-  .ni{font-size:28px;color:#0a0d15;}
-  .ni.fab{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid #0a0d15;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;}
+  .ni{font-size:44px;color:#0a0d15;}
+  .ni.fab{width:72px;height:72px;border-radius:50%;background:#fff;border:3px solid #0a0d15;display:flex;align-items:center;justify-content:center;font-size:44px;font-weight:700;}
+
+  .sections{width:576px;margin:0 auto;padding:4px 0 64px;}
+  .sec-title{font-size:28px;font-weight:700;color:#0a0d15;margin:36px 26px 14px;line-height:1.2;}
+  .ch-card{background:#fff;border-radius:16px;margin:0 26px 14px;padding:18px;box-sizing:border-box;}
+  .ch-top{display:flex;justify-content:space-between;align-items:center;}
+  .ch-name{font-size:24px;font-weight:700;color:#0a0d15;line-height:1.2;}
+  .ch-day{font-size:18px;font-weight:700;color:#f0671e;}
+  .ch-bar{height:10px;background:#e7e5da;border-radius:5px;overflow:hidden;margin:12px 0 10px;}
+  .ch-fill{height:100%;background:#0ab199;border-radius:5px;}
+  .ch-meta{display:flex;justify-content:space-between;font-size:18px;color:#0a0d15;line-height:1.3;}
+  .ch-coins{color:#0ab199;font-weight:700;}
+  .ch-shield{margin-top:10px;font-size:18px;color:#0a0d15;line-height:1.3;}
+  .ch-card.locked .ch-name{color:#0a0d15;}
+  .ch-card.locked{opacity:.78;}
+  .ch-lock{font-size:20px;}
+  .coin-card{background:#fff;border-radius:16px;margin:0 26px;padding:6px 18px;box-sizing:border-box;}
+  .coin-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid #efece2;font-size:22px;color:#0a0d15;line-height:1.3;}
+  .coin-row .amt{color:#0ab199;font-weight:700;}
+  .coin-total{display:flex;justify-content:space-between;align-items:center;padding:14px 0 8px;font-size:22px;font-weight:700;color:#0a0d15;border-top:2px solid #f3ddc9;line-height:1.3;}
+  .coin-total .amt{color:#f0671e;}
+  .streak-card{background:#fff;border-radius:16px;margin:0 26px;padding:18px;box-sizing:border-box;}
+  .streak-dots{display:flex;gap:10px;margin-bottom:12px;}
+  .dot{width:22px;height:22px;border-radius:50%;background:#e7e5da;}
+  .dot.on{background:#f0671e;}
+  .streak-label{font-size:22px;font-weight:700;color:#0a0d15;line-height:1.3;}
+  .streak-sub{font-size:18px;color:#0a0d15;margin-top:4px;line-height:1.3;}
+
+  @keyframes ember-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .r-gauge-plate{z-index:2;}
+  .gauge-plate img{animation:ember-bob 3.2s ease-in-out infinite;}
+  @keyframes ring-breathe{0%,100%{opacity:1}50%{opacity:.92}}
+  svg.ring-anim{animation:ring-breathe 3.2s ease-in-out infinite;}
+  @keyframes rise-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .ch-card,.coin-card,.streak-card,.sec-title{animation:rise-in .5s ease-out both;}
+  .ch-card:nth-of-type(2){animation-delay:.08s}
+  .ch-card:nth-of-type(3){animation-delay:.16s}
+  .ch-card:nth-of-type(4){animation-delay:.24s}
+  .ch-card:nth-of-type(5){animation-delay:.32s}
+  .coin-card{animation-delay:.2s}
+  .streak-card{animation-delay:.3s}
+  @keyframes chip-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+  #coin-chip{animation:chip-pulse 3.2s ease-in-out infinite;}
+
+  @media (max-width:640px){
+    .frame{width:100%;height:auto;aspect-ratio:576/1024;}
+    .sections{width:100%;}
+    body{overflow-x:hidden;}
+    .r-coin-numeral,#coin-numeral{margin-left:6%!important;}
+    #coin-chip{margin-left:2%;max-width:96%;}
+  }
+  @media (min-width:1024px){
+    body{display:block;margin:0;}
+    .frame{width:576px;height:1024px;margin:0;transform:scale(2.5);transform-origin:top left;margin-bottom:1536px;}
+    .sections{width:576px;margin:0;transform:scale(2.5);transform-origin:top left;}
+  }
+
+  *{animation-play-state:paused!important;}
+  .ch-card,.coin-card,.streak-card,.sec-title{opacity:1!important;transform:none!important;}
+
+  @media (max-width:640px){
+    #hero-challenge{font-size:clamp(14px,4.2vw,24px)!important;}
+    #coin-chip{font-size:clamp(14px,4vw,24px)!important;}
+    #coin-numeral,.r-coin-numeral{font-size:clamp(28px,9vw,44px)!important;}
+    .sb-time{font-size:clamp(28px,9vw,56px)!important;}
+  }
+  *{animation:none!important;transition:none!important;} /* animations-disabled-for-capture */
 </style>
 </head>
 <body>
 <div class="frame">
   <div class="r" style="position:absolute;left:0;top:0;width:100%;height:10%;">
     <span class="sb-time">8:41</span>
-    <span class="sb-icons"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="wifi"><i></i><i></i></span><span class="batt"><i></i></span></span>
+    <span class="sb-icons"><span class="sig"><i></i><i></i><i></i><i></i></span><svg width="20" height="15" viewBox="0 0 20 15" fill="none"><path d="M2 5.2C5.8 1.6 14.2 1.6 18 5.2" stroke="#0a0d15" stroke-width="2.2" stroke-linecap="round"/><path d="M5.2 8.6c2.7-2.4 6.9-2.4 9.6 0" stroke="#0a0d15" stroke-width="2.2" stroke-linecap="round"/><circle cx="10" cy="12.4" r="1.6" fill="#0a0d15"/></svg><span class="batt"><i></i></span></span>
   </div>
   <div class="tb-title"><span class="back">&lt;</span><span class="t">Health Leveling</span><span class="more">&hellip;</span></div>
-  <div class="r r-coin-chip" id="coin-chip">1,240 coins</div>
-  <div class="r r-coin-numeral" id="coin-numeral" style="display:flex;align-items:center;transform:rotate(-42deg);transform-origin:left center;font-size:51px;font-weight:800;color:#080f19;margin-left:15%;margin-top:0;">1,240</div>
-  <svg style="position:absolute;left:0;top:0;width:100%;height:100%;" viewBox="0 0 576 1024" fill="none">
+  <div class="r r-coin-chip" id="coin-chip" style="background:transparent;display:flex;align-items:center;justify-content:center;overflow:visible;"><div style="background:#12b49f;border-radius:999px;width:82%;height:64%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;font-weight:700;overflow:hidden;white-space:nowrap;">1,240 coins</div></div>
+  <div class="r r-coin-numeral" id="coin-numeral" style="display:flex;align-items:center;transform:rotate(-42deg);transform-origin:left center;font-size:58px;font-weight:800;color:#080f19;margin-left:3%;margin-top:4.4%;">1,240</div>
+  <svg class="ring-anim" style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;" viewBox="0 0 576 1024" fill="none">
   <defs><linearGradient id="ringg" x1="0%" y1="100%" x2="100%" y2="0%">
-    <stop offset="0%" stop-color="#d2500f"/><stop offset="100%" stop-color="#f5993d"/>
+    <stop offset="0%" stop-color="#e05a10"/><stop offset="100%" stop-color="#ea6f1c"/>
   </linearGradient></defs>
-  <ellipse cx="288" cy="440" rx="182" ry="205" stroke="url(#ringg)" stroke-width="44"/>
+  <ellipse cx="288" cy="433" rx="182" ry="205" stroke="url(#ringg)" stroke-width="44"/>
   
   <g stroke="#f8a95c" stroke-width="3">
     <line x1="288" y1="217" x2="288" y2="240"/>
@@ -66,22 +133,63 @@
     <line x1="417" y1="307" x2="404" y2="321"/>
     <line x1="159" y1="307" x2="172" y2="321"/>
   </g>
-  <path d="M 232 415 Q 288 490 344 415" stroke="#d2500f" stroke-width="26" stroke-linecap="round" fill="none"/>
-  <line x1="288" y1="213" x2="288" y2="252" stroke="#f8f8ef" stroke-width="4"/>
+  <path d="M 232 415 Q 288 490 344 415" stroke="#d2500f" stroke-width="42" stroke-linecap="round" fill="none"/>
 </svg>
 
 
 
 
-  <div class="r r-gauge-plate gauge-plate" style="position:absolute;"><img src="assets/plates/gauge-plate.png" alt="Ember mascot" style="position:absolute;left:0;bottom:0;width:100%;height:90.6%;object-fit:contain;object-position:center bottom;"></div>
-  <div style="position:absolute;left:10.42%;top:65.23%;width:61.46%;height:4.69%;background:#fff;border-radius:16px;display:flex;align-items:center;padding:0 18px;box-sizing:border-box;font-size:44px;font-weight:400;white-space:nowrap;overflow:hidden;color:#090e15;line-height:1;">Day 4 · Fitness Starter</div>
+  <div class="r r-gauge-plate gauge-plate" style="position:absolute;"><img src="assets/plates/gauge-plate.png" alt="Ember mascot" style="position:absolute;left:0;bottom:0;width:100%;height:82%;object-fit:contain;object-position:center bottom;"></div>
+  <div id="hero-challenge" style="position:absolute;left:10.42%;top:66.2%;width:61.46%;height:4.69%;background:#fff;border-radius:16px;display:flex;align-items:center;padding:0 18px;box-sizing:border-box;font-size:44px;font-weight:400;white-space:nowrap;overflow:hidden;color:#090e15;line-height:1;">Day 4 · Fitness Starter</div>
   <div class="r r-progress-bar" id="progress-bar"><div class="wrap"><div class="fill"></div></div></div>
-  <div style="position:absolute;left:9.38%;top:79.2%;width:81.25%;height:7%;background:#f0671e;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:700;">Start session</div>
+  <div style="position:absolute;left:9.38%;top:79.2%;width:81.25%;height:7%;background:#f0671e;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;font-weight:700;">Start session</div>
   <div class="r r-bottom-nav" id="bottom-nav">
-    <span class="ni">&#11088;</span>
-    <span class="ni fab">+</span>
-    <span class="ni">&#128274;</span>
+    <span class="ni"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8L12 3.5z" stroke="#0AB199" stroke-width="2" stroke-linejoin="round"/></svg></span>
+    <span class="ni fab"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#0A0D15" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+    <span class="ni"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="5" y="10.5" width="14" height="9.5" rx="2" stroke="#0A0D15" stroke-width="2"/><path d="M8 10.5V8a4 4 0 1 1 8 0v2.5" stroke="#0A0D15" stroke-width="2"/></svg></span>
+  </div>
+
+</div>
+<div class="sections">
+  <div class="sec-title">Your challenges</div>
+  <div class="ch-card">
+    <div class="ch-top"><span class="ch-name">Fitness Starter</span><span class="ch-day">Day 4 of 7</span></div>
+    <div class="ch-bar"><div class="ch-fill" style="width:35%"></div></div>
+    <div class="ch-meta"><span>35% complete</span><span class="ch-coins">+15 coins · workout 15 min</span></div>
+    <div class="ch-shield"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px;margin-right:6px;"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z" stroke="#0AB199" stroke-width="2" stroke-linejoin="round"/></svg>2 shields active</div>
+  </div>
+  <div class="ch-card locked">
+    <div class="ch-top"><span class="ch-name">Dopamine Detox</span><span class="ch-lock">🔒</span></div>
+    <div class="ch-meta"><span>3-day dopamine reset</span><span class="ch-coins">+2 coins · squat ×5</span></div>
+  </div>
+  <div class="ch-card locked">
+    <div class="ch-top"><span class="ch-name">Langkah Harian</span><span class="ch-lock">🔒</span></div>
+    <div class="ch-meta"><span>2,000 steps a day</span><span class="ch-coins">+10 coins</span></div>
+  </div>
+  <div class="ch-card locked">
+    <div class="ch-top"><span class="ch-name">Sleep Reset</span><span class="ch-lock">🔒</span></div>
+    <div class="ch-meta"><span>Fixed bedtime for 7 nights</span><span class="ch-coins">+15 coins</span></div>
+  </div>
+
+  <div class="sec-title">Today&rsquo;s coins</div>
+  <div class="coin-card">
+    <div class="coin-row"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:-4px;margin-right:8px;"><path d="M4 17l4-8 4 3 4-6 4 11" stroke="#0AB199" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>2,000 steps</span><span class="amt">+10</span></div>
+    <div class="coin-row"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:-4px;margin-right:8px;"><path d="M3 12h4m10 0h4M7 12a5 5 0 0 1 10 0" stroke="#0AB199" stroke-width="2" stroke-linecap="round"/></svg>Push-up ×5</span><span class="amt">+2</span></div>
+    <div class="coin-row"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:-4px;margin-right:8px;"><path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm8 16v-6a4 4 0 0 0-4-4h-2" stroke="#0AB199" stroke-width="2" stroke-linecap="round"/></svg>Squat ×5</span><span class="amt">+2</span></div>
+    <div class="coin-row"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:-4px;margin-right:8px;"><circle cx="12" cy="13" r="8" stroke="#0AB199" stroke-width="2"/><path d="M12 9v4l3 2" stroke="#0AB199" stroke-width="2" stroke-linecap="round"/></svg>Workout 15 min</span><span class="amt">+15</span></div>
+    <div class="coin-total"><span>Streak ×1.5</span><span class="amt">+43</span></div>
+  </div>
+
+  <div class="sec-title">Streak</div>
+  <div class="streak-card">
+    <div class="streak-dots">
+      <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span>
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    </div>
+    <div class="streak-label">4-day streak · ×1.5 coins</div>
+    <div class="streak-sub">Hit 7 days to reach ×2.0</div>
   </div>
 </div>
+
 </body>
 </html>
