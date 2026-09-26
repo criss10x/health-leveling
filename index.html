@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Health Leveling — Home hero</title>
+<link rel="stylesheet" href=".impeccable/build/scaffold/layout.css">
+<style>
+  html,body{margin:0;padding:0;background:#e8e6e0;}
+  .frame{position:relative;width:576px;height:1024px;margin:0 auto;background:#f8f8ef;overflow:hidden;font-family:'M PLUS 1p',sans-serif;color:#0a0d15;}
+  .sb-time{position:absolute;left:4%;top:4%;font-size:66px;font-weight:700;line-height:1.35;}
+  .sb-icons{position:absolute;right:4%;top:24%;display:flex;gap:12px;align-items:center;transform:scale(1.5);transform-origin:right center;}
+  .sig{display:flex;align-items:flex-end;gap:2px;}
+  .sig i{width:6px;background:#0a0d15;display:block;}
+  .sig i:nth-child(1){height:6px}.sig i:nth-child(2){height:10px}.sig i:nth-child(3){height:14px}.sig i:nth-child(4){height:18px}
+  .wifi{width:20px;height:14px;position:relative;}
+  .wifi i{position:absolute;left:50%;bottom:0;transform:translateX(-50%);border:3px solid transparent;border-top-color:#0a0d15;}
+  .wifi i:nth-child(1){border-width:8px 10px 0;bottom:0}
+  .wifi i:nth-child(2){border-width:5px 7px 0;bottom:6px}
+  .batt{width:30px;height:15px;border:2.5px solid #0a0d15;border-radius:4px;position:relative;background:#0a0d15;}
+  .batt i{position:absolute;right:-5px;top:3px;width:3px;height:5px;background:#0a0d15;border-radius:1px;}
+  .tb-title{position:absolute;left:0;top:10%;width:100%;height:10%;display:flex;align-items:center;}
+  .tb-title .back{font-size:30px;font-weight:700;margin-left:24px;}
+  .tb-title .t{flex:1;text-align:center;font-size:30px;font-weight:700;line-height:1.4;}
+  .tb-title .more{font-size:28px;font-weight:700;margin-right:24px;letter-spacing:2px;}
+  .gauge-plate{display:block;}
+  .gauge-plate img{width:100%;height:100%;object-fit:contain;}
+  .arc{border:10px solid #f3ddc9;border-radius:50%;}
+  #gauge-arc{border-color:#f0671e transparent transparent #f0671e;border-style:solid;border-width:10px;border-radius:50%;transform:rotate(45deg);box-sizing:border-box;}
+  #gauge-left-arc{border-color:transparent transparent transparent #f0671e;border-style:solid;border-width:10px;border-radius:50%;transform:rotate(0deg);box-sizing:border-box;}
+  #gauge-right-arc{border-color:transparent #f0671e transparent transparent;border-style:solid;border-width:10px;border-radius:50%;box-sizing:border-box;}
+  #gauge-bottom-arc{border-color:transparent transparent #f0671e transparent;border-style:solid;border-width:10px;border-radius:50%;box-sizing:border-box;}
+  #coin-chip{background:#12b49f;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px;font-weight:700;}
+  #coin-numeral{display:flex;align-items:center;justify-content:flex-start;font-size:56px;font-weight:800;color:#080f19;line-height:1;}
+  #challenge-card{background:#fff;border-radius:16px;display:flex;align-items:center;padding:0 18px;font-size:30px;font-weight:400;color:#090e15;}
+  #progress-bar{display:flex;align-items:center;}
+  #progress-bar .wrap{width:100%;height:12px;background:#e7e5da;border-radius:6px;overflow:hidden;}
+  #progress-bar .fill{width:35%;height:100%;background:#0ab199;border-radius:6px;}
+  #cta-start{background:#f0671e;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:700;}
+  #bottom-nav{background:#f7f7f7;display:flex;align-items:center;justify-content:space-around;}
+  .ni{font-size:28px;color:#0a0d15;}
+  .ni.fab{width:56px;height:56px;border-radius:50%;background:#fff;border:2px solid #0a0d15;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:700;}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="r" style="position:absolute;left:0;top:0;width:100%;height:10%;">
+    <span class="sb-time">8:41</span>
+    <span class="sb-icons"><span class="sig"><i></i><i></i><i></i><i></i></span><span class="wifi"><i></i><i></i></span><span class="batt"><i></i></span></span>
+  </div>
+  <div class="tb-title"><span class="back">&lt;</span><span class="t">Health Leveling</span><span class="more">&hellip;</span></div>
+  <div class="r r-coin-chip" id="coin-chip">1,240 coins</div>
+  <div class="r r-coin-numeral" id="coin-numeral" style="display:flex;align-items:center;transform:rotate(-42deg);transform-origin:left center;font-size:51px;font-weight:800;color:#080f19;margin-left:15%;margin-top:0;">1,240</div>
+  <svg style="position:absolute;left:0;top:0;width:100%;height:100%;" viewBox="0 0 576 1024" fill="none">
+  <defs><linearGradient id="ringg" x1="0%" y1="100%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#d2500f"/><stop offset="100%" stop-color="#f5993d"/>
+  </linearGradient></defs>
+  <ellipse cx="288" cy="440" rx="182" ry="205" stroke="url(#ringg)" stroke-width="44"/>
+  
+  <g stroke="#f8a95c" stroke-width="3">
+    <line x1="288" y1="217" x2="288" y2="240"/>
+    <line x1="288" y1="663" x2="288" y2="640"/>
+    <line x1="470" y1="440" x2="448" y2="440"/>
+    <line x1="106" y1="440" x2="128" y2="440"/>
+    <line x1="417" y1="573" x2="404" y2="559"/>
+    <line x1="159" y1="573" x2="172" y2="559"/>
+    <line x1="417" y1="307" x2="404" y2="321"/>
+    <line x1="159" y1="307" x2="172" y2="321"/>
+  </g>
+  <path d="M 232 415 Q 288 490 344 415" stroke="#d2500f" stroke-width="26" stroke-linecap="round" fill="none"/>
+  <line x1="288" y1="213" x2="288" y2="252" stroke="#f8f8ef" stroke-width="4"/>
+</svg>
+
+
+
+
+  <div class="r r-gauge-plate gauge-plate" style="position:absolute;"><img src="assets/plates/gauge-plate.png" alt="Ember mascot" style="position:absolute;left:0;bottom:0;width:100%;height:90.6%;object-fit:contain;object-position:center bottom;"></div>
+  <div style="position:absolute;left:10.42%;top:65.23%;width:61.46%;height:4.69%;background:#fff;border-radius:16px;display:flex;align-items:center;padding:0 18px;box-sizing:border-box;font-size:44px;font-weight:400;white-space:nowrap;overflow:hidden;color:#090e15;line-height:1;">Day 4 · Fitness Starter</div>
+  <div class="r r-progress-bar" id="progress-bar"><div class="wrap"><div class="fill"></div></div></div>
+  <div style="position:absolute;left:9.38%;top:79.2%;width:81.25%;height:7%;background:#f0671e;border-radius:999px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:26px;font-weight:700;">Start session</div>
+  <div class="r r-bottom-nav" id="bottom-nav">
+    <span class="ni">&#11088;</span>
+    <span class="ni fab">+</span>
+    <span class="ni">&#128274;</span>
+  </div>
+</div>
+</body>
+</html>
