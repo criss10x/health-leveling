@@ -4,10 +4,10 @@ import 'package:health_leveling/design/tokens.dart';
 
 void main() {
   test('design tokens guard: brand colors', () {
-    expect(Ds.ember.value, 0xFFF0671E);
-    expect(Ds.teal.value, 0xFF0AB199);
-    expect(Ds.ink.value, 0xFF0A0D15);
-    expect(Ds.ivory.value, 0xFFF8F8EF);
+    expect(Ds.ember.toARGB32(), 0xFFF0671E);
+    expect(Ds.teal.toARGB32(), 0xFF0AB199);
+    expect(Ds.ink.toARGB32(), 0xFF0A0D15);
+    expect(Ds.ivory.toARGB32(), 0xFFF8F8EF);
   });
 
   test('design tokens guard: coin economy (PRD §4)', () {

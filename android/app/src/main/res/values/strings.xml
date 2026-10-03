@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Health Leveling</string>
+    <string name="lockout_service_desc">Health Leveling uses this service to detect when a locked app opens, so it can show the lock screen until you earn screen time by completing health challenges.</string>
+</resources>

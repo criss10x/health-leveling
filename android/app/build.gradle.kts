@@ -6,6 +6,9 @@ plugins {
 
 android {
     namespace = "com.criss10x.health_leveling"
+    buildFeatures {
+        buildConfig = true
+    }
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
