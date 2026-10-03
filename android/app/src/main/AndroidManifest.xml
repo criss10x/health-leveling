@@ -1,4 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+        <!-- Health Connect (PRD §2#2): verifikasi langkah/workout/tidur lokal-device. -->
+    <uses-permission android:name="android.permission.health.READ_STEPS"/>
+    <uses-permission android:name="android.permission.health.READ_WORKOUT"/>
+    <uses-permission android:name="android.permission.health.READ_SLEEP"/>
     <application
         android:label="Health Leveling"
         android:name="${applicationName}"
