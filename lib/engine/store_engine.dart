@@ -25,8 +25,8 @@ class StoreEvent {
     this.shieldUsed = false,
   });
 
-  factory StoreEvent.earn({required HabitSource source, required int coins, required int streakDays}) =>
-      StoreEvent._(type: 'earn', source: source, coins: coins, streakDays: streakDays);
+  factory StoreEvent.earn({required HabitSource source, required int coins, required int streakDays, int? dayKey}) =>
+      StoreEvent._(type: 'earn', source: source, coins: coins, streakDays: streakDays, dayKey: dayKey);
 
   factory StoreEvent.spendUnlock({
     required UnlockPackage pkg,
