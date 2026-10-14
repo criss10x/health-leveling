@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:health_leveling/design/tokens.dart';
+import 'package:health_leveling/features/challenges/challenges_screen.dart';
+import 'package:health_leveling/features/unlock/unlock_screen.dart';
 
 /// Ember Meter home screen — reproduction of approved Comp A
 /// (.impeccable/mocks/home-a.png) per .impeccable/build/spec.json regions.
@@ -222,17 +224,39 @@ class _BottomNav extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Icon(Icons.home_rounded, size: 30, color: Ds.teal),
-          Container(
-            width: 64,
-            height: 64,
-            margin: const EdgeInsets.only(bottom: 18),
-            decoration: const BoxDecoration(color: Ds.ink, shape: BoxShape.circle),
-            child: const Icon(Icons.add, size: 32, color: Colors.white),
+          // Home (di sini — no-op tap)
+          const IconButton(
+            onPressed: null,
+            icon: Icon(Icons.home_rounded, size: 30, color: Ds.teal),
           ),
-          const Icon(Icons.lock_outline_rounded, size: 30, color: Ds.chrome),
+          GestureDetector(
+            onTap: () => _pushChallenges(context),
+            child: Container(
+              width: 64,
+              height: 64,
+              margin: const EdgeInsets.only(bottom: 18),
+              decoration: const BoxDecoration(color: Ds.ink, shape: BoxShape.circle),
+              child: const Icon(Icons.star_outline_rounded, size: 32, color: Ds.teal),
+            ),
+          ),
+          IconButton(
+            onPressed: () => _pushUnlock(context),
+            icon: const Icon(Icons.lock_outline_rounded, size: 30, color: Ds.chrome),
+          ),
         ],
       ),
+    );
+  }
+
+  void _pushChallenges(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const ChallengesScreen()),
+    );
+  }
+
+  void _pushUnlock(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const UnlockScreen(balance: 1240)),
     );
   }
 }
