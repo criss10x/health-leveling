@@ -2,17 +2,6 @@
 /// One source of state (PRD §9): store events replay into these.
 library;
 
-abstract final class Ds {
-  static const int coinsPer2000Steps = 10;
-  static const int coinsPushups5x = 2;
-  static const int coinsSquats5x = 2;
-  static const int coinsWorkout15Min = 15;
-  static const int coinsMeditation5m = 5;
-  static const int coinsWater1glass = 1;
-  static const int coinsSleep7h = 10;
-  static const int coinsPer10MinUnlock = 20;
-}
-
 /// Sumber koin (PRD §4.1 / §4.4).
 enum HabitSource {
   steps2000(10), // Health Connect only

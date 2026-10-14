@@ -8,16 +8,16 @@ enum DailyTier { none, bronze, silver, gold }
 class ChallengeCatalog {
   ChallengeCatalog._();
 
-  static const _fitness = _Def('fitness-starter', 21, bronze: (15, 15), silver: (30, 30), gold: (50, 50), bonus: 100);
-  static const _detox = _Def('dopamine-detox', 7, bronze: (2, 0), silver: (4, 0), gold: (6, 0), bonus: 150); // jam detox
-  static const _steps = _Def('10k-steps', 30, bronze: (6000, 0), silver: (8000, 0), gold: (10000, 0), bonus: 200);
-  static const _sleep = _Def('sleep-reset', 14, bronze: (650, 0), silver: (700, 0), gold: (750, 0), bonus: 100); // menit tidur
+  static const fitness = ChallengeDef('fitness-starter', 21, bronze: (15, 15), silver: (30, 30), gold: (50, 50), bonus: 100);
+  static const detox = ChallengeDef('dopamine-detox', 7, bronze: (2, 0), silver: (4, 0), gold: (6, 0), bonus: 150); // jam detox
+  static const steps = ChallengeDef('10k-steps', 30, bronze: (6000, 0), silver: (8000, 0), gold: (10000, 0), bonus: 200);
+  static const sleep = ChallengeDef('sleep-reset', 14, bronze: (650, 0), silver: (700, 0), gold: (750, 0), bonus: 100); // menit tidur
 
-  static const all = [_fitness, _detox, _steps, _sleep];
+  static const all = [fitness, detox, steps, sleep];
 }
 
-class _Def {
-  const _Def(this.id, this.durationDays, {required this.bronze, required this.silver, required this.gold, required this.bonus});
+class ChallengeDef {
+  const ChallengeDef(this.id, this.durationDays, {required this.bronze, required this.silver, required this.gold, required this.bonus});
   final String id;
   final int durationDays;
   final (int, int) bronze;
@@ -51,13 +51,13 @@ class ChallengeEngine {
 
   static int completionBonus(String id) => _byId(id).bonus;
 
-  static _Def _byId(String id) =>
+  static ChallengeDef _byId(String id) =>
       ChallengeCatalog.all.firstWhere((d) => d.id == id, orElse: () => throw ArgumentError('unknown challenge: $id'));
 
   /// Tier dari hasil hari ini (dua criteria indikator: main value + optional second).
   /// Untuk fitness: pushups/squats. Untuk lainnya: (value, 0).
   static DailyTier tier({required int pushups, int squats = 0}) {
-    final f = ChallengeCatalog._fitness;
+    final f = ChallengeCatalog.fitness;
     if (pushups >= f.gold.$1 && squats >= f.gold.$2) return DailyTier.gold;
     if (pushups >= f.silver.$1 && squats >= f.silver.$2) return DailyTier.silver;
     if (pushups >= f.bronze.$1 && squats >= f.bronze.$2) return DailyTier.bronze;
