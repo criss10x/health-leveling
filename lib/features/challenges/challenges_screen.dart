@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../design/tokens.dart';
 import '../../engine/challenge_engine.dart';
+import 'challenge_detail_screen.dart';
 
 /// ChallengesScreen — port of the approved Home below-the-fold sections
 /// (DESIGN.md §Home contract): "Your challenges" list dengan 4 katalog launch,
@@ -40,6 +41,15 @@ class ChallengesScreen extends StatelessWidget {
             _ChallengeCard(
               def: def,
               run: activeRuns.where((r) => r.challengeId == def.id).firstOrNull,
+              onTap: () {
+                final run = activeRuns.where((r) => r.challengeId == def.id).firstOrNull;
+                if (run == null) return;
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => ChallengeDetailScreen(run: run),
+                  ),
+                );
+              },
             ),
         ],
       ),
@@ -48,17 +58,20 @@ class ChallengesScreen extends StatelessWidget {
 }
 
 class _ChallengeCard extends StatelessWidget {
-  const _ChallengeCard({required this.def, this.run});
+  const _ChallengeCard({required this.def, this.run, this.onTap});
 
   final ChallengeDef def;
   final ChallengeRun? run;
+  final VoidCallback? onTap;
 
   bool get _isFree => def.id == 'fitness-starter';
 
   @override
   Widget build(BuildContext context) {
     final day = run == null ? 0 : _currentDay();
-    return Container(
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
       margin: const EdgeInsets.only(bottom: 14),
       padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
@@ -130,6 +143,7 @@ class _ChallengeCard extends StatelessWidget {
               style: const TextStyle(color: Ds.chrome, fontSize: 13),
             ),
         ],
+      ),
       ),
     );
   }
